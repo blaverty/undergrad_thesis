@@ -14,23 +14,23 @@ done
 
 #collapseOverlap.pl -s -m -c -t 0.99 BandS/$1 > BandS/$1col
 
-#mkdir pipe/$2
+mkdir pipe/$2
 #
-#ExtractContext.pl -s -i $3 -c $4 -p 4 sequence.fasta BandS/$1col > pipe/$2/oligo$4 &
+ExtractContext.pl -s -i $3 -c $4 -p 4 sequence.fasta BandS/$1col > pipe/$2/oligo$4 &
 #ExtractContext.pl -s -i $3 -c $5 -p 4 sequence.fasta BandS/$1col > pipe/$2/oligo$5 &
 #ExtractContext.pl -s -i $3 -c $6 -p 4 sequence.fasta BandS/$1col > pipe/$2/oligo$6 &
 #ExtractContext.pl -s -i $3 -c $7 -p 4 sequence.fasta BandS/$1col > pipe/$2/oligo$7 &
 #wait
 
-#selLength.py -l 102 pipe/$2/oligo$4 > pipe/$2/oligo$4L &
+selLength.py -l 102 pipe/$2/oligo$4 > pipe/$2/oligo$4L &
 #selLength.py -l 128 pipe/$2/oligo$5 > pipe/$2/oligo$5L &
 #selLength.py -l 153 pipe/$2/oligo$6 > pipe/$2/oligo$6L &
 #selLength.py -l 178 pipe/$2/oligo$7 > pipe/$2/oligo$7L &
 #wait
 #
-#mkdir pipe/$2/blast4
+mkdir pipe/$2/blast4
 #
-#/usr/local/blast/current/bin/blastn -query ~/sepsis2/AMR4/pipe/$2/oligo$4L -out ~/sepsis2/AMR4/pipe/$2/blast4/$4 -db nt -evalue 1e-20 -perc_identity 95 -qcov_hsp_perc 100 -outfmt "6 qseqid saccver qstart qend sstart send staxid ssciname" &
+/usr/local/blast/current/bin/blastn -query ~/sepsis2/AMR4/pipe/$2/oligo$4L -out ~/sepsis2/AMR4/pipe/$2/blast4/$4 -db nt -evalue 1e-20 -perc_identity 95 -qcov_hsp_perc 100 -outfmt "6 qseqid saccver qstart qend sstart send staxid ssciname" &
 #/usr/local/blast/current/bin/blastn -query ~/sepsis2/AMR4/pipe/$2/oligo$5L -out ~/sepsis2/AMR4/pipe/$2/blast4/$5 -evalue 1e-20 -perc_identity 95 -qcov_hsp_perc 100 -db nt -outfmt "6 qseqid saccver qstart qend sstart send staxid ssciname" &
 #/usr/local/blast/current/bin/blastn -query ~/sepsis2/AMR4/pipe/$2/oligo$6L -out ~/sepsis2/AMR4/pipe/$2/blast4/$6 -db nt -evalue 1e-20 -perc_identity 95 -qcov_hsp_perc 100 -outfmt "6 qseqid saccver qstart qend sstart send staxid ssciname" &
 #/usr/local/blast/current/bin/blastn -query ~/sepsis2/AMR4/pipe/$2/oligo$7L -out ~/sepsis2/AMR4/pipe/$2/blast4/$7 -evalue 1e-20 -perc_identity 95 -qcov_hsp_perc 100 -db nt -outfmt "6 qseqid saccver qstart qend sstart send staxid ssciname" &
